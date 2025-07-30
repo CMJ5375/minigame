@@ -1,0 +1,188 @@
+html{margin: 0; padding: 0; height: 100%; }
+
+    body{margin: 0; padding: 0; height: 100%; background-color: white; color: black;}
+
+    table {
+        width: 90vmin; height: 90vmin; max-width: 100vw; max-height: 100vh;
+        margin: auto; border-collapse: collapse; table-layout: fixed;
+    }
+    td {border: 1px solid #aaa;padding: 0;}
+    textarea {
+        width: 100%;
+        height: 100%;
+        font-size: 3rem;
+        text-align: center;
+        line-height: 100%; 
+        padding: 0;
+        margin: 0;
+        border: none;
+        resize: none;
+        overflow: hidden;
+        box-sizing: border-box;
+        vertical-align: middle;
+        font-family: sans-serif;
+        font-weight: bold;
+        color: black;
+        background-color: white;
+    }
+    textarea:focus {
+      outline: none;
+      background-color: #eef;
+    }
+    textarea[data-memo] {
+      font-size: 1rem;
+    }
+    tr:nth-child(3n) td {
+      border-bottom: 3px solid black;
+    }
+    td:nth-child(3n) {
+      border-right: 3px solid black;
+    }
+    tr:first-child td {
+      border-top: 3px solid black;
+    }
+    td:first-child {
+      border-left: 3px solid black;
+    }
+    h2 {text-align: center; font-size: 20px; margin: 0;}
+    button {
+      background-color: #2e2e2e;
+      color: white;
+      border: 1px solid gray;
+      size: 50px;
+    }
+    .button-container {
+      margin-top: 5px;
+      display: flex;
+      width: 90vw;
+      margin: 10px auto;      
+    }
+    #toggleModeBtn {
+      font-size: 2rem;
+      margin: 0 30px;
+      flex: 1;
+      border-radius: 1px;
+    }
+    #resetBtn {
+      font-size: 2rem;
+      margin: 0 30px;
+      flex: 1;
+      border-radius: 1px;
+    }
+    #hintBtn {
+      font-size: 2rem;
+      margin: 0 30px;
+      flex: 1;
+      border-radius: 1px;
+    }
+    #startScreen {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center; 
+      align-items: center;
+      background-color: #fefefe;
+    }
+
+    .difficulty-buttons {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      height: 50vh;
+      width: 100%;
+      max-width: 300px;
+    }
+
+    .difficulty-buttons button {
+      height: 5rem;
+      font-size: 2rem;
+      margin: 1rem 0;
+      width: 100%;
+    }
+
+    #startScreen.dark-mode {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center; 
+      align-items: center;
+      background-color: #2e2e2e;;
+    }
+    body.dark-mode {
+      background-color: #2e2e2e;
+      color: #f0f0f0;
+    }
+    table.dark-mode {
+      border-color: #555;
+    }
+    textarea.dark-mode {
+      background-color: #2e2e2e;
+      color: lightblue;
+      border: none;
+      font-size: 3rem;
+    }
+    textarea.dark-mode:disabled {
+      color: #f0f0f0;
+    }
+    button.dark-mode {
+      background-color: #f5f5f5;
+      color: #2e2e2e;
+      border: 1px solid #666;
+    }
+    h2.dark-mode {
+      background-color: #2e2e2e;
+      color: #f0f0f0;
+      margin: 0;
+      border-bottom: 2px solid white;
+    }
+
+    #keypad {
+      border: 1px solid black; 
+      width: 500px;
+      height: auto;
+      table-layout: auto;
+      margin: 0;
+      background-color: #ddd; 
+    }
+
+    #keypad td {
+     border: 1px solid black; 
+     font-size: 100px; 
+     font-weight: bold; 
+     text-align: center;
+     padding: 20px 20px;
+     cursor: pointer;
+    }
+
+    body.dark-mode #keypad {
+      background-color: #2e2e2e;
+      border: 1px solid #666;
+    }
+
+    body.dark-mode #keypad td {
+      background-color: #2e2e2e;
+      color: #f0f0f0;
+      border: 1px solid #888;
+    }
+    .highlight-same {
+      background-color: yellow !important;
+    }
+    body.dark-mode .highlight-same {
+      background-color: #4444aa !important;
+    }
+   #timer {
+      font-family: 'Courier New', monospace;
+      font-size: 5rem;
+      font-weight: bold;
+      position: absolute; right: 120px; top: 180px;
+      text-align: center;
+      width: 300px;
+      padding: 20px 40px;
+      border-radius: 15px;
+      background-color: #ddd;
+      color: #4444aa;
+    }
+    body.dark-mode #timer {
+      background-color: #111;
+      color: #0ff;
+    }

@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>숫자야구</title>
+    <style>
+        log li{
+            font-family: monospace;
+            margin-bottom: 4px;
+        }
+        table{
+            border: 1px solid black; 
+            width: 50%; position: fixed; 
+            right: 5px; top: 5px;
+        }
+        th,td{border: 1px solid black; font-size: 35px; font-weight: bold; text-align: center;} 
+    </style>
+</head>
+<body>
+    <h2>숫자야구</h2>
+    <input type="text" id="guess" maxlength="4">
+    <button type="button" onclick="abc()">입력</button> <!-- 버튼을 누르면 abc()함수를 실행-->
+    <button type="button" onclick="reset()">다시 시작</button>
+    <p id="output"></p>
+    <ul id="log"></ul>
+    <article>
+        <table id="table">
+            <tr>
+                <td class="key" id="num7">7</td>
+                <td class="key" id="num8">8</td>
+                <td class="key" id="num9">9</td>
+            </tr>
+            <tr>
+                <td class="key" id="num4">4</td>
+                <td class="key" id="num5">5</td>
+                <td class="key" id="num6">6</td>
+            </tr>
+            <tr>
+                <td class="key" id="num1">1</td>
+                <td class="key" id="num2">2</td>
+                <td class="key" id="num3">3</td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td class="key" id="num0">0</td>
+                <td> </td>
+            </tr>
+        </table>
+    </article>    
+    <script defer>
+        function generateAnswer() { //정답 만드는 부분
+            const answer = []; // anser 란 빈 배열 생성
+
+            while (answer.length < 4) { //배열의 길이를 4로 정하고 반복
+                const num = Math.floor(Math.random() * 10);  //num 이라는 랜덤 함수 생성후 채우기
+                if (!answer.includes(num)) { //중복검사 answer에 num이라는 숫자가 있지 않을경우
+                    answer.push(num); //answer에 num을 넣는다 = 중복이면 안넣는다.
+                }
+            }     
+            return answer; //반복
+        }
+        let secret = generateAnswer(); //위의 생성된 배열을 함수로 변환 함수명 secret
+        console.log("컴퓨터의 숫자:", secret); //답지
+        let turn = 1; //후술할 턴 을 위한 변수 선언 초기값은 1
+        function answerguess(answer,guess){ //S와 B 만드는 과정 answer와 guess 비교
+            let strike = 0; //S
+            let ball = 0; //B
+
+            for(let i=0; i<4; i++){ //4번반복하며
+                if(guess[i]===answer[i]){ //답과 숫자가 정확히 일치하면 S 카운트 up
+                    strike++;
+                } else if(answer.includes(guess[i])){ //S는 아닌데 B일경우 (포함될경우) B카운트 up
+                    ball++; 
+                }
+            }
+            return {strike,ball};//반복
+        }
+
+        function abc(){ //메인 함수
+            const input = document.getElementById("guess").value; //입력값을 받아서 값(문자열)으로 반환
+            const output = document.getElementById("output"); //S와B 등등을 표시할 공간을 만듬
+            const div = input.split("").map(Number); //문자열이기 때문에 정수형으로 변환
+            if(div.length != 4 || new Set(div).size != 4 || div.some(isNaN)) {
+                //유효성 검사 순서대로 4자리수가 아니거나 중복이 있거나 문자열이 껴있으면
+                output.innerText = "중복 없이 숫자 4자리를 입력하세요!"; //ㅇㅇ
+                return;//반환
+            }
+            output.innerText = `입력한 숫자: ${div.join(", ")}`; //입력한거 화면에 출력 join은 숫자 사이에 문자열 넣는역할
+            console.log("입력한 숫자:", div);//입력한거 로그에 출력
+        
+        const result = answerguess(secret,div); //지지고 볶던 숫자 가져와서 결과로 정리
+        output.innerText = `결과 :${result.strike}S ${result.ball}B`; // 출력
+
+        const logItem = document.createElement("li"); //추가한걸 li형으로 출력한것 
+        document.getElementById("log").appendChild(logItem);
+        logItem.textContent = `[${turn}턴] 입력: ${div.join("")} → ${result.strike}S ${result.ball}B`;
+
+        if(result.strike === 4){ //정답 부분
+            alert("정답!");
+        }
+        turn ++;//턴증가
+        document.getElementById("guess").value = ""; //guess 적은거 초기화
+    }//abc()
+        function reset(){
+            secret = generateAnswer();
+            turn = 1;
+            document.getElementById("output").innerText = "";
+            document.getElementById("log").innerHTML = "";
+            document.getElementById("guess").value = "";
+            console.log("컴퓨터의 숫자:", secret); //답지
+        }
+    const guessInput = document.getElementById("guess");
+    let keys = document.querySelectorAll(".key");
+
+    keys.forEach(key => {
+        key.addEventListener("click", function () {
+        if (guessInput.value.length < 4) {
+            guessInput.value += this.innerText;
+            }
+        });
+    });
+
+    </script>
+</body>
+</html>

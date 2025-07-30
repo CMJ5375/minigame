@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="style/sdokustyle.css">
+</head>
+<body>
+  <!--스도쿠 보드,다크모드버튼,난이도선택 버튼-->
+  <header>
+  <!--스도쿠 보드-->
+  <h2 style="border-bottom: 2px solid black;font-size: 50px;">스도쿠</h2> 
+  <!--다크모드 버튼-->
+  <button id="darkModeToggle"  style="position: absolute; right: 0px; top: 0px; font-size: 30px;">다크모드</button>
+  <!--난이도 선택 버튼-->
+  </header>
+  <!--난이도선택 버튼-->
+  <div id="startScreen">
+      <h2 style="font-size: 50px; font-weight: bold; border-style: solid;">난이도 선택</h2>
+      <div class="difficulty-buttons">
+        <button onclick="startGame('easy')">쉬움</button>
+        <button onclick="startGame('medium')">보통</button>
+        <button onclick="startGame('hard')">어려움</button>
+      </div>
+  </div>
+  <!--스도쿠 메인  게임화면-->
+  <section class="gamescreen" hidden>
+    <!--목숨-->
+    <div id="lifeDisplay" style="font-size: 80px; position: absolute; left: 50; top: 65px; font-weight: bold;">❤️❤️❤️</div>
+    <!--스도쿠 메인보드-->
+    <div style="display: flex; justify-content: center; align-items: flex-start; gap: 20px;">
+      <table id="sudokuBoard"></table>
+    </div>
+    <!--키패드-->
+    <div class="interface">
+      <table id="keypad" style="position: absolute; right: 75px; top: 400px;">
+              <tr>
+                  <td class="key" data-value="1">1</td>
+                  <td class="key" data-value="2">2</td>
+                  <td class="key" data-value="3">3</td>
+              </tr>
+              <tr>
+                  <td class="key" data-value="4">4</td>
+                  <td class="key" data-value="5">5</td>
+                  <td class="key" data-value="6">6</td>
+              </tr>
+              <tr>
+                  <td class="key" data-value="7">7</td>
+                  <td class="key" data-value="8">8</td>
+                  <td class="key" data-value="9">9</td>
+              </tr>
+        </table>
+    </div>
+    <!--시계-->
+    <div id="timer" >
+      00:00
+    </div>
+    <div class="button-container"> <!--버튼 관련-->
+      <button id="resetBtn">다시 시작</button>
+      <button id="toggleModeBtn">메모</button>
+      <button id="hintBtn">힌트(3)</button>
+    </div>
+  </section>
+  <script src="./script/sdoku.js"></script>
+</body>
+</html>
