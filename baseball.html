@@ -4,21 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>숫자야구</title>
-    <style>
-        log li{
-            font-family: monospace;
-            margin-bottom: 4px;
-        }
-        table{
-            border: 1px solid black; 
-            width: 50%; position: fixed; 
-            right: 5px; top: 5px;
-        }
-        th,td{border: 1px solid black; font-size: 35px; font-weight: bold; text-align: center;} 
-    </style>
+    <link rel="stylesheet" href="./css/bootstrap.css">
 </head>
 <body>
-    <h2>숫자야구</h2>
+    
+    <h2 class="display-1">숫자야구</h2>
     <input type="text" id="guess" maxlength="4">
     <button type="button" onclick="abc()">입력</button> <!-- 버튼을 누르면 abc()함수를 실행-->
     <button type="button" onclick="reset()">다시 시작</button>
@@ -122,5 +112,6 @@
     });
 
     </script>
+    <script src="./js/bootstrap.bundle.js"></script>
 </body>
 </html>
